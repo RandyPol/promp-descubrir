@@ -6,9 +6,10 @@ import { useState, useEffect } from 'react'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Nav = () => {
-  const isUserLogged = false
+  const isUserLogged = true
 
   const [providers, setProviders] = useState(null)
+  const [toggleMenu, setToggleMenu] = useState(false)
 
   useEffect(() => {
     const getProvidersData = async () => {
@@ -52,6 +53,48 @@ const Nav = () => {
                 height={35}
               />
             </Link>
+          </div>
+        ) : (
+          <>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type="button"
+                  key={provider.id}
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  Iniciar Sesión
+                </button>
+              ))}
+          </>
+        )}
+      </div>
+
+      {/* Mobile design */}
+      <div className="sm:hidden flex relative">
+        {isUserLogged ? (
+          <div className="flex">
+            <Image
+              src="/assets/images/logo.svg"
+              alt="Profile"
+              width={35}
+              height={35}
+              className="rounded-full"
+              onClick={() => setToggleMenu((prev) => !prev)}
+            />
+
+            {toggleMenu && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleMenu((prev) => !prev)}
+                >
+                  Mi perfil
+                </Link>
+              </div>
+            )}
           </div>
         ) : (
           <>
