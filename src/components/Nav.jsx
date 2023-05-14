@@ -3,10 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { singIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Nav = () => {
-  const isUserLogged = true
+  const isUserLogged = false
+
+  const [providers, setProviders] = useState(null)
+
+  useEffect(() => {
+    const getProvidersData = async () => {
+      const providersData = await getProviders()
+      setProviders(providersData)
+    }
+    getProvidersData()
+  }, [])
+
   return (
     <nav
       className="flex-between w-full
@@ -44,7 +55,17 @@ const Nav = () => {
           </div>
         ) : (
           <>
-            <Link href="/login" className="flex gap-2 flex-center" />
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type="button"
+                  key={provider.id}
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  Iniciar Sesión
+                </button>
+              ))}
           </>
         )}
       </div>
