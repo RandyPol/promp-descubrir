@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
+import { User } from '@/models/user'
 import { connectToDatabase } from '@/utils/db'
 
 const handler = NextAuth({
@@ -14,6 +15,15 @@ const handler = NextAuth({
   async signIn({ profile }) {
     try {
       await connectToDatabase()
+      const user = await User.findOne({ email: profile.email })
+
+      if (!user) {
+        await User.create({
+          email: profile.email,
+          username: profile.name.replace(' ', '').toLowerCase(),
+          image: profile.picture,
+        })
+      }
 
       return true
     } catch (error) {
