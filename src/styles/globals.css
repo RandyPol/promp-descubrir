@@ -166,5 +166,5 @@
 }
 
 .flex-between {
-  @apply;
+  @apply flex justify-between items-center;
 }
