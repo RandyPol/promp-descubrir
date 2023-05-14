@@ -47,10 +47,11 @@ const Nav = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={isUserLogged?.user.image}
                 alt="Profile"
                 width={35}
                 height={35}
+                className="rounded-full"
               />
             </Link>
           </div>
