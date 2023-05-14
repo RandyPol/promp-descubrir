@@ -77,7 +77,7 @@ const Nav = () => {
         {isUserLogged?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={isUserLogged?.user.image}
               alt="Profile"
               width={35}
               height={35}
