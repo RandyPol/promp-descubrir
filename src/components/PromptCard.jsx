@@ -42,6 +42,13 @@ const PromptCard = ({ prompt, handleTagClick }) => {
           />
         </div>
       </div>
+      <p className="my-4 font-satoshi text-sm text-gray-700">{prompt.prompt}</p>
+      <p
+        className="font-inter text-sm blue_gradient"
+        onClick={() => handleTagClick && handleTagClick(prompt.tag)}
+      >
+        {prompt.tag}
+      </p>
     </div>
   )
 }
