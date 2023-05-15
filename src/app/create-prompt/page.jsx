@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation'
 import Form from '@components/Form'
 
 const CreatePrompt = () => {
+  const router = useRouter()
+  const { data: isUserLogged } = useSession()
+
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
     prompt: '',
     tag: '',
   })
-  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +25,7 @@ const CreatePrompt = () => {
         method: 'POST',
         body: JSON.stringify({
           prompt: post.prompt,
-          userId: session?.user.id,
+          userId: isUserLogged?.user.id,
           tag: post.tag,
         }),
       })
