@@ -1,15 +1,26 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import PromptCard from './PromptCard'
+import PromptCardList from './PromptCardList'
 
 const Feed = () => {
   const [searchText, setSearchText] = useState('')
+  const [posts, setPosts] = useState([])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('searchText', searchText)
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/api/prompt')
+      const data = await res.json()
+
+      setPosts(data)
+    }
+    fetchData()
+  }, [])
 
   return (
     <section className="feed">
@@ -23,7 +34,7 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCard />
+      <PromptCardList data={posts} handleTagClick={() => {}} />
     </section>
   )
 }
