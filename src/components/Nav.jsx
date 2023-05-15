@@ -32,7 +32,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">PrompDescubrir</p>
+        <p className="logo_text">PromptDescubrir</p>
       </Link>
 
       {/* Response design */}
