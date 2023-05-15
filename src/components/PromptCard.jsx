@@ -9,6 +9,7 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState('')
   const { data: isUserLogged } = useSession()
   const pathName = usePathname()
+  const router = useRouter()
 
   const handleCopy = () => {
     setCopied(prompt.prompt)
@@ -64,13 +65,13 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
         pathName === '/profile' && (
           <div className="flex justify-end items-center gap-5 mt-5">
             <p
-              className="font-inter text-sm green_gradient"
+              className="font-inter text-sm green_gradient cursor-pointer"
               onClick={handleEdit}
             >
               Editar
             </p>
             <p
-              className="font-inter text-sm orange_gradient"
+              className="font-inter text-sm orange_gradient cursor-pointer"
               onClick={handleDelete}
             >
               Eliminar
