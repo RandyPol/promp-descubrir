@@ -5,8 +5,10 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { usePathname, useRouter } from 'next/navigation'
 
-const PromptCard = ({ prompt, handleTagClick }) => {
+const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState('')
+  const { data: isUserLogged } = useSession()
+  const pathName = usePathname()
 
   const handleCopy = () => {
     setCopied(prompt.prompt)
@@ -57,6 +59,24 @@ const PromptCard = ({ prompt, handleTagClick }) => {
       >
         {prompt.tag}
       </p>
+
+      {isUserLogged?.user.id === prompt.creator._id &&
+        pathName === '/profile' && (
+          <div className="flex justify-end items-center gap-5 mt-5">
+            <p
+              className="font-inter text-sm green_gradient"
+              onClick={handleEdit}
+            >
+              Editar
+            </p>
+            <p
+              className="font-inter text-sm orange_gradient"
+              onClick={handleDelete}
+            >
+              Eliminar
+            </p>
+          </div>
+        )}
     </div>
   )
 }
