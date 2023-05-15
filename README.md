@@ -1,4 +1,4 @@
-# PromptDescucrir
+# PromptDescubrir
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourname/projectname/blob/main/LICENSE)
 
@@ -28,15 +28,27 @@ This project is a web application for creating and sharing AI prompts. Users can
 - Implementing a rating system for prompts ranks
 - Implement search and filter options for browsing prompts
 
-## Screenshots
-
-![Screenshot of the Homepage](/public/assets/screenshots/home_login.png)
-![Screenshot of the Create Prompt Page](/public/assets/screenshots/create_prompt.png)
-![Screenshot of the Profile Page](/public/assets/screenshots/account_profile.png)
-
 ## Walkthrough GIF
 
-![GIF of the Application Walkthrough](/public/assets/images/walkthrough.gif)
+![GIF of the Application Walkthrough](/public/assets/screenshots/walkthrough.gif)
+
+## Screenshots
+
+### Homepage (Logged In)
+
+![Screenshot of the Homepage](/public/assets/screenshots/home_login.png)
+
+### Homepage (Logged Out)
+
+![Screenshot of the Homepage](/public/assets/screenshots/home_signout.png)
+
+### Create Prompt Page
+
+![Screenshot of the Create Prompt Page](/public/assets/screenshots/create_prompt.png)
+
+### Profile Page
+
+![Screenshot of the Profile Page](/public/assets/screenshots/account_profile.png)
 
 ## Installation and Usage
 
