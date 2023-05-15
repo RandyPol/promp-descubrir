@@ -58,7 +58,7 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
         className="font-inter text-sm blue_gradient"
         onClick={() => handleTagClick && handleTagClick(prompt.tag)}
       >
-        {prompt.tag}
+        #{prompt.tag}
       </p>
 
       {isUserLogged?.user.id === prompt.creator._id &&
