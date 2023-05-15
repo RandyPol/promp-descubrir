@@ -1,11 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { css } from '@emotion/react'
+import { ClipLoader } from 'react-spinners'
 import PromptCardList from './PromptCardList'
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+`
 
 const Feed = () => {
   const [searchText, setSearchText] = useState('')
   const [posts, setPosts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -13,11 +21,14 @@ const Feed = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
+
     const fetchData = async () => {
       const res = await fetch('/api/prompt')
       const data = await res.json()
 
       setPosts(data)
+      setIsLoading(false)
     }
     fetchData()
   }, [])
@@ -34,7 +45,18 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      {isLoading ? (
+        <div className="sweet-loading">
+          <ClipLoader
+            css={override}
+            size={60}
+            color={'#123abc'}
+            loading={isLoading}
+          />
+        </div>
+      ) : (
+        <PromptCardList data={posts} handleTagClick={() => {}} />
+      )}
     </section>
   )
 }
