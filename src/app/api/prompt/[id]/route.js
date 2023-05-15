@@ -14,3 +14,23 @@ export const GET = async (req, res, { params }) => {
     return new Response('Failed to get prompt', { status: 500 })
   }
 }
+
+// Update the Prompt
+export const PATCH = async (req, res, { params }) => {
+  const { prompt, tag } = await req.json()
+  try {
+    await connectToDatabase()
+    const oldPrompt = await Prompt.findById(params.id)
+
+    if (!oldPrompt) return new Response('Prompt not found', { status: 404 })
+
+    oldPrompt.prompt = prompt
+    oldPrompt.tag = tag
+
+    await oldPrompt.save()
+
+    return new Response(JSON.stringify(oldPrompt), { status: 200 })
+  } catch (error) {
+    return new Response('Failed to update prompt', { status: 500 })
+  }
+}
