@@ -13,8 +13,12 @@ const Nav = () => {
 
   useEffect(() => {
     const getProvidersData = async () => {
-      const providersData = await getProviders()
-      setProviders(providersData)
+      try {
+        const providersData = await getProviders()
+        setProviders(providersData)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getProvidersData()
   }, [])
