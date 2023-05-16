@@ -31,6 +31,15 @@ const Nav = () => {
     }
   }
 
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      setToggleMenu((prev) => !prev)
+    } catch (error) {
+      console.error('KLK Error signing out:', error)
+    }
+  }
+
   return (
     <nav
       className="flex-between w-full
@@ -54,7 +63,11 @@ const Nav = () => {
             <Link href="/create-prompt" className="black_btn">
               Crear Publicación
             </Link>
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="outline_btn"
+            >
               Cerrar sesión
             </button>
             <Link href="/profile">
@@ -116,7 +129,7 @@ const Nav = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    signOut()
+                    handleSignOut()
                     setToggleMenu((prev) => !prev)
                   }}
                   className="mt-5 w-full black_btn"
