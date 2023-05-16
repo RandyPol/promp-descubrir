@@ -6,6 +6,10 @@
 
 This project is a web application for creating and sharing AI prompts. Users can create an account, browse through a feed of prompts, create their own prompts, and view their prompts in a personal profile. The application was built using the Next.js framework and MongoDB database.
 
+## Live Demo
+
+Check out the live demo [here](https://promptdescubrir-818ogm6xo-randypol.vercel.app/).
+
 ## Features
 
 - User authentication and authorization with NextAuth.js
