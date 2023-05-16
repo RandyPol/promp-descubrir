@@ -24,12 +24,20 @@ const Feed = () => {
     setIsLoading(true)
 
     const fetchData = async () => {
-      const res = await fetch('/api/prompt')
-      const data = await res.json()
-
-      setPosts(data)
-      setIsLoading(false)
+      try {
+        const res = await fetch('/api/prompt')
+        if (!res.ok) {
+          throw new Error('Failed to fetch prompts from the server')
+        }
+        const data = await res.json()
+        setPosts(data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
     }
+
     fetchData()
   }, [])
 
