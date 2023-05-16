@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PromptDescubrir
 
-## Getting Started
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourname/projectname/blob/main/LICENSE)
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This project is a web application for creating and sharing AI prompts. Users can create an account, browse through a feed of prompts, create their own prompts, and view their prompts in a personal profile. The application was built using the Next.js framework and MongoDB database.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Check out the live demo [here](https://promptdescubrir-randypol.vercel.app/).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- User authentication and authorization with NextAuth.js
+- Creating, updating, and deleting writing prompts
+- Browsing a feed of prompts and viewing personal prompts
 
-To learn more about Next.js, take a look at the following resources:
+## Libraries Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js
+- MongoDB
+- NextAuth.js
+- Tailwind CSS
+- React
+- React-Spinners
+- Bcrypt
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Upcoming Features
 
-## Deploy on Vercel
+- Adding comments to prompts
+- Implementing a rating system for prompts ranks
+- Implement search and filter options for browsing prompts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Walkthrough GIF
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![GIF of the Application Walkthrough](/public/assets/screenshots/walkthrough.gif)
+
+## Screenshots
+
+### Homepage (Logged In)
+
+![Screenshot of the Homepage](/public/assets/screenshots/home_login.png)
+
+### Homepage (Logged Out)
+
+![Screenshot of the Homepage](/public/assets/screenshots/home_signout.png)
+
+### Create Prompt Page
+
+![Screenshot of the Create Prompt Page](/public/assets/screenshots/create_prompt.png)
+
+### Profile Page
+
+![Screenshot of the Profile Page](/public/assets/screenshots/account_profile.png)
+
+## Installation and Usage
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Create a `.env` file with your MongoDB connection URI and NextAuth.js configuration
+4. Run the development server with `npm run dev`
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
