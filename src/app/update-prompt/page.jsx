@@ -19,7 +19,7 @@ const EditPrompt = () => {
   const promptId = searchParams.get('id')
 
   const [submitting, setSubmitting] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [post, setPost] = useState({
     prompt: '',
     tag: '',
@@ -51,15 +51,25 @@ const EditPrompt = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
+
     const getPrompt = async () => {
-      const res = await fetch(`/api/prompt/${promptId}`)
-      const prompt = await res.json()
-      setPost({
-        prompt: prompt.prompt,
-        tag: prompt.tag,
-      })
-      setLoading(false)
+      try {
+        const res = await fetch(`/api/prompt/${promptId}`)
+        if (!res.ok) throw new Error('Failed to fetch prompt')
+
+        const prompt = await res.json()
+        setPost({
+          prompt: prompt.prompt,
+          tag: prompt.tag,
+        })
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
     }
+
     if (promptId) getPrompt()
   }, [promptId])
 
@@ -67,11 +77,11 @@ const EditPrompt = () => {
     <>
       <ClipLoader
         color={'#123abc'}
-        loading={loading}
+        loading={isLoading}
         css={override}
         size={150}
       />
-      {!loading && (
+      {!isLoading && (
         <Form
           type="Editar"
           post={post}
