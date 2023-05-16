@@ -23,6 +23,14 @@ const Nav = () => {
     getProvidersData()
   }, [])
 
+  const handleSignIn = async (providerId) => {
+    try {
+      await signIn(providerId)
+    } catch (error) {
+      console.error('klk Error signing in:', error)
+    }
+  }
+
   return (
     <nav
       className="flex-between w-full
@@ -66,7 +74,7 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.id}
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => handleSignIn(provider.id)}
                   className="black_btn"
                 >
                   Iniciar Sesión
@@ -125,7 +133,7 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.id}
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => handleSignIn(provider.id)}
                   className="black_btn"
                 >
                   Iniciar Sesión
