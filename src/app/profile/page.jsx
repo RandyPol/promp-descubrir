@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { css } from '@emotion/react'
 import { ClipLoader } from 'react-spinners'
 
-import Profile from '@components/profile'
+import Profile from '@components/Profile'
 
 const override = css`
   display: block;
