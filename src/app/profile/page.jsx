@@ -19,15 +19,22 @@ const ProfilePage = () => {
   const { data: session } = useSession()
 
   const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`/api/users/${session?.user.id}/posts`)
-      const data = await res.json()
+    setIsLoading(true)
 
-      setPosts(data)
-      setLoading(false)
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`/api/users/${session?.user.id}/posts`)
+        if (!res.ok) throw new Error('Failed to fetch user posts')
+        const data = await res.json()
+        setPosts(data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
     }
     if (session?.user.id) fetchData()
   }, [session])
@@ -57,13 +64,14 @@ const ProfilePage = () => {
 
   return (
     <>
-      <ClipLoader
-        color={'#123abc'}
-        loading={loading}
-        css={override}
-        size={150}
-      />
-      {!loading && (
+      {isLoading ? (
+        <ClipLoader
+          color={'#123abc'}
+          loading={isLoading}
+          css={override}
+          size={150}
+        />
+      ) : (
         <Profile
           name="Account"
           desc="Perfil personalizado basado en las creaciones de consignas del usuario."
