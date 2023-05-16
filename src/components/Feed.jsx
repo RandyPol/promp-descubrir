@@ -35,7 +35,8 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form onSubmit={handleSubmit} className="relative w-full flex-center">
+      {/* Future feature to implement for prompt searches */}
+      {/* <form onSubmit={handleSubmit} className="relative w-full flex-center">
         <input
           type="text"
           placeholder="Buscar etiqueta o nombre de usuario"
@@ -44,7 +45,7 @@ const Feed = () => {
           required
           className="search_input peer"
         />
-      </form>
+      </form> */}
       {isLoading ? (
         <div className="sweet-loading">
           <ClipLoader
