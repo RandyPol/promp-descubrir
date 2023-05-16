@@ -64,21 +64,36 @@ const ProfilePage = () => {
 
   return (
     <>
-      {isLoading ? (
-        <ClipLoader
-          color={'#123abc'}
-          loading={isLoading}
-          css={override}
-          size={150}
-        />
-      ) : (
-        <Profile
-          name="Account"
-          desc="Perfil personalizado basado en las creaciones de consignas del usuario."
-          data={posts}
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
+      {!session?.user && (
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Bienvenido a nuestra aplicación
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Inicia sesión para acceder a funciones personalizadas y crear tu
+            propio perfil.
+          </p>
+        </div>
+      )}
+      {session?.user && (
+        <>
+          {isLoading ? (
+            <ClipLoader
+              color={'#123abc'}
+              loading={isLoading}
+              css={override}
+              size={150}
+            />
+          ) : (
+            <Profile
+              name="Account"
+              desc="Perfil personalizado basado en las creaciones de consignas del usuario."
+              data={posts}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+          )}
+        </>
       )}
     </>
   )
