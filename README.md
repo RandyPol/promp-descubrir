@@ -8,7 +8,7 @@ This project is a web application for creating and sharing AI prompts. Users can
 
 ## Live Demo
 
-Check out the live demo [here](https://promptdescubrir-oj3842y6h-randypol.vercel.app/).
+Check out the live demo [here](https://promptdescubrir-randypol.vercel.app/).
 
 ## Features
 
